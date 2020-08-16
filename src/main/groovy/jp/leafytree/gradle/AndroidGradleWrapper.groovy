@@ -19,6 +19,11 @@ class AndroidGradleWrapper {
 //            result.addAll(provider.java.srcDirs())
 //        }
 
+        for (provider in  variantData.scope.variantSources.sortedSourceProviders){
+            result.addAll(provider.javaDirectories)
+        }
+
+
         // generated sources
         def javaSources = variantData.getJavaSources() //("getJavaSources")
         if (javaSources instanceof  Object[]) {
