@@ -15,7 +15,7 @@ class AndroidGradleWrapper {
         def result = new LinkedHashSet<File>()
 
         // user sources
-        for (provider in variantData.variantConfiguration.sortedSourceProviders) {
+        for (provider in variantData.variantDslInfo.sortedSourceProviders) {
             result.addAll(provider.java.srcDirs())
         }
 
@@ -43,7 +43,7 @@ class AndroidGradleWrapper {
                 result += variantData.scope.classOutputForDataBinding
             }
 
-            if (!variantData.variantConfiguration.renderscriptNdkModeEnabled && variantData.scope.renderscriptCompileTask != null) {
+            if (!variantData.variantDslInfo.renderscriptNdkModeEnabled && variantData.scope.renderscriptCompileTask != null) {
                 result += variantData.scope.renderscriptSourceOutputDir
             }
         }
